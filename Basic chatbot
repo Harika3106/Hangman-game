@@ -1,0 +1,36 @@
+import random
+
+# Predefined responses
+responses = {
+    "hello": ["Hi there!", "Hello!", "Hey! How can I help you?"],
+    "how are you": ["I'm just a program, but I'm doing well!", "I'm here to assist you!"],
+    "bye": ["Goodbye!", "See you later!", "Take care!"],
+    "name": ["I’m a simple chatbot!", "You can call me ChatBot!", "I’m your virtual assistant."],
+    "default": ["I'm not sure I understand that.", "Can you rephrase?", "Let's try something else."]
+}
+
+# Chatbot function
+def chatbot():
+    print("🤖 ChatBot: Hello! I'm your basic chatbot. Type 'bye' to exit.")
+    
+    while True:
+        user_input = input("You: ").lower()
+
+        if user_input == "bye":
+            print("🤖 ChatBot: Goodbye! Have a nice day!")
+            break
+
+        response = None
+        for key in responses:
+            if key in user_input:
+                response = random.choice(responses[key])
+                break
+        
+        if response is None:
+            response = random.choice(responses["default"])
+        
+        print(f"🤖 ChatBot: {response}")
+
+# Run the chatbot
+if __name__ == "__main__":
+    chatbot()
